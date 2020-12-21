@@ -1,5 +1,9 @@
 package pe.com.intercorp.ti.demo;
 
+/*
+Desarrollador: Oscar Erick Candela Carbajal  
+*/
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
