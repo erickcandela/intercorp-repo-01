@@ -38,7 +38,7 @@ public class ControllerClient {
 		
 		try {
 			
-			texto0201 = "Loading application properties" + "<br/>";
+			texto0201 = "Loading application properties - Insert" + "<br/>";
 			Properties properties = new Properties();
 			properties.load(ControllerClient.class.getClassLoader().getResourceAsStream("application.properties"));
 			
@@ -51,10 +51,10 @@ public class ControllerClient {
 			propertyPassword = properties.getProperty("password");
 			System.out.println(propertyPassword);
 			
-			texto0202 = "Connecting to the database" + "<br/>";
+			texto0202 = "Connecting to the database - Insert" + "<br/>";
 			
 			Connection connection = DriverManager.getConnection(propertyUrl, propertyUser, propertyPassword);
-			texto0203 = "Database connection test: " + connection.getCatalog() + "<br/>";
+			texto0203 = "Database connection test - Insert: " + connection.getCatalog() + "<br/>";
 	
 			Long id = parseLong(0);
 			String nombre = "0";
@@ -63,7 +63,7 @@ public class ControllerClient {
 			String edad = "0";
 			String fechaNacimiento = "0";
 			
-			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO client (id, nombre, apellidoPaterno, apellidoMaterno, edad, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?);");
+			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO client (id, nombre, apellidopaterno, apellidomaterno, edad, fechanacimiento) VALUES (?, ?, ?, ?, ?, ?);");
 			
 			id = parseLong(3);
 			nombre = "Franklin";
@@ -81,14 +81,14 @@ public class ControllerClient {
 			objetBean.setFechaNacimiento(fechaNacimiento);			
 			
 		    insertStatement.setLong(1, objetBean.getId());
-		    insertStatement.setString(2, objetBean.getApellidoPaterno());
-		    insertStatement.setString(3, objetBean.getApellidoMaterno());
-		    insertStatement.setString(4, objetBean.getNombre());
+		    insertStatement.setString(2, objetBean.getNombre());
+		    insertStatement.setString(3, objetBean.getApellidoPaterno());
+		    insertStatement.setString(4, objetBean.getApellidoMaterno());		    
 		    insertStatement.setString(5, objetBean.getEdad());
 		    insertStatement.setString(6, objetBean.getFechaNacimiento());
 		    insertStatement.executeUpdate();			
 			
-			texto0204 = "Closing database connection" + "<br/>";
+			texto0204 = "Closing database connection - Insert" + "<br/>";
 			connection.close();	
 			
 			
