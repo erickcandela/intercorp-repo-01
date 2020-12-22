@@ -93,6 +93,11 @@ public class ControllerClient {
 			  
 				BClient objetBean = new BClient();
 				objetBean.setId(id);
+				objetBean.setNombre(nombre);
+				objetBean.setApellidoPaterno(apellidoPaterno);
+				objetBean.setApellidoMaterno(apellidoMaterno);
+				objetBean.setEdad(edad);
+				objetBean.setFechaNacimiento(fechaNacimiento);
 			
 			  objetList.add(objetBean);
 			}
