@@ -143,6 +143,8 @@ public class ControllerClient {
 		String propertyUser = "0";
 		String propertyPassword = "0";
 		
+		String rowContent = "0";
+		
 		try {
 			
 			texto0201 = "Loading application properties - Insert" + "<br/>";
@@ -176,14 +178,12 @@ public class ControllerClient {
 			PreparedStatement listStatement = connection.prepareStatement("SELECT max(id) FROM client;");
 		    ResultSet resultSet = listStatement.executeQuery();
 		    
-		    if (!resultSet.next()) {
+			if (resultSet.next()) {			 
+				idMax = resultSet.getLong(1);				
+			} else {
 		    	error03 = "There is no data in the database!";
 		    	texto0200 += error03;
-		        return null;
-		    }
-		    
-			while (resultSet.next()) {			 
-				idMax = resultSet.getLong(1);				
+		        return null;				
 			}
 			
 			/*===================================================================*/
@@ -196,6 +196,8 @@ public class ControllerClient {
 			apellidoMaterno = "Condori";
 			edad = "40";
 			fechaNacimiento = "15/03/1978";
+			
+			rowContent = "<br/>id =" + id + "; nombre =" + nombre + "; apellidoPaterno =" + apellidoPaterno + "; apellidoMaterno =" + apellidoMaterno + "; edad =" + edad + "; fechaNacimiento=" + fechaNacimiento;
 			
 			BClient objetBean = new BClient();
 			objetBean.setId(id);
@@ -225,7 +227,7 @@ public class ControllerClient {
 			texto0200 += error02;
 		}
 		
-		texto0200 += texto0201 + texto0202 + texto0203 + texto0204;	
+		texto0200 += texto0201 + texto0202 + texto0203 + texto0204 + rowContent;	
 		System.out.println("insertClient FIN");
 				
 		return texto0200;
