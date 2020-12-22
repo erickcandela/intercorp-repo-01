@@ -51,7 +51,7 @@ public class ControllerDatabase {
 			System.out.println(propertyPassword);
 			
 			texto0202 = "Connecting to the database" + "<br/>";
-			//Connection connection = DriverManager.getConnection(propertyUrl, properties);
+			
 			Connection connection = DriverManager.getConnection(propertyUrl, propertyUser, propertyPassword);
 			texto0203 = "Database connection test: " + connection.getCatalog() + "<br/>";
 			
