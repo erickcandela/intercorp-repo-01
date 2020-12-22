@@ -63,6 +63,8 @@ public class ControllerClient {
 			String edad = "0";
 			String fechaNacimiento = "0";
 			
+			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO client (id, nombre, apellidoPaterno, apellidoMaterno, edad, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?);");
+			
 			id = parseLong(3);
 			nombre = "Franklin";
 			apellidoPaterno = "Gómez";
@@ -76,10 +78,8 @@ public class ControllerClient {
 			objetBean.setApellidoPaterno(apellidoPaterno);
 			objetBean.setApellidoMaterno(apellidoMaterno);
 			objetBean.setEdad(edad);
-			objetBean.setFechaNacimiento(fechaNacimiento);
+			objetBean.setFechaNacimiento(fechaNacimiento);			
 			
-			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO client (id, nombre, apellidopaterno, apellidomaterno, edad, fechanacimiento) VALUES (?, ?, ?, ?, ?, ?);");
-
 		    insertStatement.setLong(1, objetBean.getId());
 		    insertStatement.setString(2, objetBean.getApellidoPaterno());
 		    insertStatement.setString(3, objetBean.getApellidoMaterno());
