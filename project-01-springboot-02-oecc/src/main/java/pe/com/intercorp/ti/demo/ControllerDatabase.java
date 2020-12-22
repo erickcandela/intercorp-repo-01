@@ -28,6 +28,7 @@ public class ControllerDatabase {
 		String texto0204 = "0";
 		String texto0200 = "0";
 
+		/*
 		texto0201 = "Loading application properties" + "<br/>";
 		Properties properties = new Properties();
 		properties.load(ControllerDatabase.class.getClassLoader().getResourceAsStream("application.properties"));
@@ -38,9 +39,10 @@ public class ControllerDatabase {
 		
 		texto0204 = "Closing database connection" + "<br/>";
 		connection.close();		
-		
+		*/
 		texto0200 = texto0201 + texto0202 + texto0203 + texto0204;	
 		System.out.println("ejecutarDatabase FIN");
+		
 		return texto0200;
 	}
 }
