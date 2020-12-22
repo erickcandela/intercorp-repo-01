@@ -85,7 +85,7 @@ public class ControllerClient {
 			while (resultSet.next()) {
 			 
 				id = resultSet.getLong("id");
-				nombre = resultSet.getString("username");
+				nombre = resultSet.getString("nombre");
 				apellidoPaterno = resultSet.getString("apellidopaterno");
 				apellidoMaterno = resultSet.getString("apellidomaterno");
 				edad = resultSet.getString("edad");
