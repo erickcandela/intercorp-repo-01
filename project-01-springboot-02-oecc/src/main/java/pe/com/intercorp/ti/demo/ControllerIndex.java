@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@ComponentScan(basePackages={"pe.com.intercorp.ti.demo"})
 public class ControllerIndex {
 
 	@RequestMapping("/")

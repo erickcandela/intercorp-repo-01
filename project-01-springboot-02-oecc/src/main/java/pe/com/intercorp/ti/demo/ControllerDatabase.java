@@ -12,9 +12,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@ComponentScan(basePackages={"pe.com.intercorp.ti.demo"})
 public class ControllerDatabase {
 
 	@RequestMapping("/dbconnect")
