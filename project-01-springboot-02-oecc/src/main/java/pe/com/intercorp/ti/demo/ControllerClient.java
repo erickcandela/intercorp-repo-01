@@ -42,6 +42,7 @@ public class ControllerClient {
 		String propertyPassword = "0";
 		
 		String listContent = "0";
+		String totalRegistros = "0";
 		
 		try {
 			
@@ -70,9 +71,8 @@ public class ControllerClient {
 			String edad = "0";
 			String fechaNacimiento = "0";
 			
-			PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM client;");
-		    ResultSet resultSet = readStatement.executeQuery();
-		    ResultSetMetaData md = resultSet.getMetaData();
+			PreparedStatement listStatement = connection.prepareStatement("SELECT * FROM client;");
+		    ResultSet resultSet = listStatement.executeQuery();
 		    
 		    List<BClient> objetList = new ArrayList<BClient>();
 		    
@@ -82,8 +82,7 @@ public class ControllerClient {
 		        return null;
 		    }
 		    
-			while (resultSet.next()) {
-			 
+			while (resultSet.next()) {			 
 				id = resultSet.getLong("id");
 				nombre = resultSet.getString("nombre");
 				apellidoPaterno = resultSet.getString("apellidopaterno");
@@ -99,10 +98,14 @@ public class ControllerClient {
 				objetBean.setEdad(edad);
 				objetBean.setFechaNacimiento(fechaNacimiento);
 			
-			  objetList.add(objetBean);
+				objetList.add(objetBean);
 			}
+			
+			totalRegistros = String.valueOf(objetList.size());
 		    
-		    for (int i = 0; i<objetList.size(); i++) {
+			listContent += "<br/>" + totalRegistros;
+			
+		    for (int i=0; i<objetList.size(); i++) {
 		    	listContent += "<br/>" + objetList.get(i).getId() + "; " + objetList.get(i).getApellidoPaterno() + "; " + objetList.get(i).getApellidoMaterno() + "; " + objetList.get(i).getEdad() + "; " + objetList.get(i).getFechaNacimiento() + "<br/>";  
 		    }
 		     
@@ -135,6 +138,7 @@ public class ControllerClient {
 		
 		String error01 = "0";
 		String error02 = "0";
+		String error03 = "0";
 		
 		String propertyUrl = "0";
 		String propertyUser = "0";
@@ -161,15 +165,33 @@ public class ControllerClient {
 			texto0203 = "Database connection test - Insert: " + connection.getCatalog() + "<br/>";
 	
 			Long id = 0L;
+			Long idMax = 0L;
 			String nombre = "0";
 			String apellidoPaterno = "0";
 			String apellidoMaterno = "0";
 			String edad = "0";
 			String fechaNacimiento = "0";
 			
+			/*===================================================================*/
+			
+			PreparedStatement listStatement = connection.prepareStatement("SELECT max(id) FROM client;");
+		    ResultSet resultSet = listStatement.executeQuery();
+		    
+		    if (!resultSet.next()) {
+		    	error03 = "There is no data in the database!";
+		    	texto0200 += error03;
+		        return null;
+		    }
+		    
+			while (resultSet.next()) {			 
+				idMax = resultSet.getLong(1);				
+			}
+			
+			/*===================================================================*/
+			
 			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO client (id, nombre, apellidopaterno, apellidomaterno, edad, fechanacimiento) VALUES (?, ?, ?, ?, ?, ?);");
 			
-			id = 3L;
+			id = idMax + 1L;
 			nombre = "Franklin";
 			apellidoPaterno = "Gómez";
 			apellidoMaterno = "Condori";
