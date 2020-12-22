@@ -19,6 +19,7 @@ public class ControllerDatabase {
 
 	@RequestMapping("/dbconnect")
 	public String ejecutarDatabase() throws SQLException, IOException {
+		System.out.println("ejecutarDatabase INICIO");
 		String texto0201 = "0";
 		String texto0202 = "0";
 		String texto0203 = "0";
@@ -37,7 +38,7 @@ public class ControllerDatabase {
 		connection.close();		
 		
 		texto0200 = texto0201 + texto0202 + texto0203 + texto0204;	
-		
+		System.out.println("ejecutarDatabase FIN");
 		return texto0200;
 	}
 }
