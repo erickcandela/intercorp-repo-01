@@ -103,7 +103,7 @@ public class ControllerClient {
 			}
 		    
 		    for (int i = 0; i<objetList.size(); i++) {
-		    	listContent = objetList.get(i).getId() + "; " + objetList.get(i).getApellidoPaterno() + "; " + objetList.get(i).getApellidoMaterno() + "; " + objetList.get(i).getEdad() + "; " + objetList.get(i).getFechaNacimiento() + "<br/>";  
+		    	listContent += "<br/>" + objetList.get(i).getId() + "; " + objetList.get(i).getApellidoPaterno() + "; " + objetList.get(i).getApellidoMaterno() + "; " + objetList.get(i).getEdad() + "; " + objetList.get(i).getFechaNacimiento() + "<br/>";  
 		    }
 		     
 			texto0204 = "Closing database connection - List" + "<br/>";
